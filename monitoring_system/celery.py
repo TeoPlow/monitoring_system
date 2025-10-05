@@ -1,8 +1,8 @@
 import os
 from celery import Celery
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'monitoring_system.settings')
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "monitoring_system.settings")
 
-app = Celery('monitoring_system')
-app.config_from_object('django.conf:settings', namespace='CELERY')
+app = Celery("monitoring_system")
+app.config_from_object("django.conf:settings", namespace="CELERY")
 app.autodiscover_tasks()

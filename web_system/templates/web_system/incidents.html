@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+    
+<head>
+    <meta charset="UTF-8">
+    <title>Инциденты</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+
+<body>
+    <h1>Инциденты</h1>
+    <div id="error"></div>
+
+    <form id="login-form">
+        <input type="text" id="username" placeholder="Логин" required>
+        <input type="password" id="password" placeholder="Пароль" required>
+        <button type="submit">Войти</button>
+    </form>
+
+    <button id="logout-btn" style="display:none;">Выйти</button>
+    <div id="incidents-container" style="display:none;">
+        <table id="incidents-table">
+            <thead>
+                <tr>
+                    <th>Тип инцидента</th>
+                    <th>Сервер</th>
+                    <th>CPU (%)</th>
+                    <th>Память (%)</th>
+                    <th>Диск (%)</th>
+                    <th>Время работы</th>
+                    <th>Время проверки</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <script src="/static/incidents.js"></script>
+</body>
+</html>
