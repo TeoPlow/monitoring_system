@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'data_collection',
 ]
 
 MIDDLEWARE = [
@@ -140,6 +141,18 @@ CELERY_TIMEZONE = TIME_ZONE
 CELERY_BEAT_SCHEDULE = {
     'poll-all-servers-by-schedule': {
         'task': 'data_collection.tasks.poll_all_servers',
+        'schedule': crontab(minute=os.getenv('CELERY_POLL_MINUTES', '*/15')),
+    },
+    'check-cpu-incidents-by-schedule': {
+        'task': 'incident_monitoring.tasks.check_cpu_incidents',
+        'schedule': crontab(minute=os.getenv('CELERY_POLL_MINUTES', '*/15')),
+    },
+    'check-memory-incidents-by-schedule': {
+        'task': 'incident_monitoring.tasks.check_memory_incidents',
+        'schedule': crontab(minute=os.getenv('CELERY_POLL_MINUTES', '*/15')),
+    },
+    'check-disk-incidents-by-schedule': {
+        'task': 'incident_monitoring.tasks.check_disk_incidents',
         'schedule': crontab(minute=os.getenv('CELERY_POLL_MINUTES', '*/15')),
     },
 }
